@@ -11,7 +11,6 @@ const MyRoutes = () => {
   return (
     <Router>
       <Routes>
-      <Route exact path="/" component={<LoginPage/>} />
         <Route path="/" element={<LoginPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/cadastro" element={<CadastroPage />} />
