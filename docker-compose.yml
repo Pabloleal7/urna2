@@ -1,39 +1,36 @@
 version: '3.8'
 
 services:
-  backend:
-    build: ./urna2-api
+  react-app:
+    build: ./front
+    container_name: react-app
     ports:
-      - "8080:8080"
+      - "3001:3001"
+    depends_on:
+      - api
+
+  api:
+    build: ./urna2-api
+    container_name: spring-api
     environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
       - SPRING_DATASOURCE_USERNAME=pablo
       - SPRING_DATASOURCE_PASSWORD=pablo
+    ports:
+      - "8080:8080"
     depends_on:
       - db
-    networks:
-      - app-network
-  frontend:
-    build: ./front
-    ports:
-      - "5173:5173"
-    networks:
-      - app-network
+
   db:
-    image: postgres
-    restart: always
+    image: postgres:13
+    container_name: db
     environment:
-      POSTGRES_USER: pablo
-      POSTGRES_PASSWORD: pablo
-    volumes:
-      - db-data:/var/lib/postgresql/data
+      - POSTGRES_USER=pablo
+      - POSTGRES_PASSWORD=pablo
     ports:
       - "5432:5432"
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
+    volumes:
+      - pgdata:/var/lib/postgresql/data
 
 volumes:
-  db-data:
+  pgdata:
