@@ -1,12 +1,18 @@
-FROM node:14-alpine
+# Escolha a imagem base
+FROM node:16-alpine
 
-WORKDIR /app
+# Cria um diretório de trabalho
+WORKDIR /front
 
-COPY . /app
+# Copia os arquivos necessários para o diretório de trabalho
+COPY package.json yarn.lock ./
+COPY . .
 
-RUN yarn install && \
-    yarn build
+# Instala as dependências do projeto
+RUN yarn install --frozen-lockfile
 
-EXPOSE 3000
+# Expõe a porta 5173 para acesso externo
+EXPOSE 5173
 
-CMD ["yarn", "start"]
+# Inicia o aplicativo React com Vite
+CMD ["yarn", "dev"]
