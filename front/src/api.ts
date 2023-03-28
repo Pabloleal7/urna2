@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://3.239.52.103:8080',
+  baseURL: 'http://apiurna-env.eba-m58zxm2n.us-east-1.elasticbeanstalk.com:8080',
   timeout: 1000,
 });
 
