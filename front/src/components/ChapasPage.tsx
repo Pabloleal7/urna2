@@ -14,7 +14,7 @@ const ChapasPage = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get<Chapa[]>(`http://localhost:8080/chapas/turma/${id}`, {
+      .get<Chapa[]>(`http://3.239.52.103:8080/chapas/turma/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

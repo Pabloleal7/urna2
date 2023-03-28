@@ -20,7 +20,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/api/v1/login', { username, password });
+      const response = await axios.post('http://3.239.52.103:8080/api/v1/login', { username, password });
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('refreshToken', response.data.refreshToken);
       navigate('/turmas');
