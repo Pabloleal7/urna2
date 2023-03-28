@@ -7,7 +7,6 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "postbuild": "cp _redirects dist/",
     "build:no-check": "node ./build-no-check.cjs"
   },
   "dependencies": {
