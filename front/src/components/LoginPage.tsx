@@ -20,7 +20,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://apiurna-env.eba-m58zxm2n.us-east-1.elasticbeanstalk.com:8080/api/v1/login', { username, password });
+      const response = await axios.post('http://apiurna-env.eba-m58zxm2n.us-east-1.elasticbeanstalk.com/api/v1/login', { username, password });
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('refreshToken', response.data.refreshToken);
       navigate('/turmas');

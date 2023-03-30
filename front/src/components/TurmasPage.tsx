@@ -12,7 +12,7 @@ const TurmasPage = () => {
     const token = localStorage.getItem('token');
 
     axios
-      .get<Turma[]>('http://apiurna-env.eba-m58zxm2n.us-east-1.elasticbeanstalk.com:8080/turmas', {
+      .get<Turma[]>('http://apiurna-env.eba-m58zxm2n.us-east-1.elasticbeanstalk.com/turmas', {
         headers: {
           Authorization: `Bearer ${token}`
         }

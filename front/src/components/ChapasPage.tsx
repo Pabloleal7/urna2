@@ -14,7 +14,7 @@ const ChapasPage = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get<Chapa[]>(`http://apiurna-env.eba-m58zxm2n.us-east-1.elasticbeanstalk.com:8080/chapas/turma/${id}`, {
+      .get<Chapa[]>(`http://apiurna-env.eba-m58zxm2n.us-east-1.elasticbeanstalk.com/chapas/turma/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -48,14 +48,14 @@ const ChapasPage = () => {
   const handleConfirmVote = () => {
     const token = localStorage.getItem("token");
     axios
-      .post(`http://localhost:8080/votos/${selectedChapaId}`, null, {
+      .post(`http://apiurna-env.eba-m58zxm2n.us-east-1.elasticbeanstalk.com/votos/${selectedChapaId}`, null, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then(() => {
         alert("Voto registrado com sucesso!");
-        setTimeLeft(5);
+        setTimeLeft(2);
       });
     setIsModalOpen(false);
   };
