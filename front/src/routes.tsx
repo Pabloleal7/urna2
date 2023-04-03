@@ -5,6 +5,7 @@ import LoginPage from '../src/components/LoginPage';
 import CadastroPage from '../src/components/CadastroPage';
 import Turmas from '../src/components/TurmasPage';
 import ChapasPage from '../src/components/ChapasPage';
+import ResultadoPage from './components/ResultadoPage';
 
 
 const MyRoutes = () => {
@@ -17,6 +18,8 @@ const MyRoutes = () => {
         <Route path="/cadastro2" element={<CadastroPage />} />
         <Route path="/turmas" element={<Turmas />} />
         <Route path="/turma/:id/chapas" element={<ChapasPage/>} />
+        <Route path="/resultado" element={<ResultadoPage/>} />
+
 
       </Routes>
     </Router>

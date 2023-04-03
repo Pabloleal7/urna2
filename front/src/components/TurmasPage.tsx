@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Turma } from './Turma';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container } from 'react-bootstrap';
+import MenuSuperior from './MenuSuperior';
 
 const TurmasPage = () => {
   const [turmas, setTurmas] = useState<Turma[]>([]);
@@ -29,11 +30,40 @@ const TurmasPage = () => {
     navigate(`/turma/${id}/chapas`);
   };
 
-  return (
-    <Container className="h-100vh d-flex justify-content-center align-items-center">
+  return (<>
+    <MenuSuperior></MenuSuperior>
+    <Container className="h-100vh d-flex justify-content-center ">
       <div>
-        <h1 className="text-center mb-4">Turmas</h1>
-        {turmas.map(turma => (
+        <h1 className="text-center mb-4">Matutino</h1>
+        {turmas.filter(t=> t.turno == 'MATUTINO').map(turma => (
+          <Button
+            key={turma.id}
+            variant="outline-primary"
+            className="w-100 mb-3"
+            onClick={() => handleTurmaClick(turma.id)}
+          >
+            {turma.nomeDaTurma} - {turma.sala} - {turma.turno}
+          </Button>
+        ))}
+      </div>
+      <div className='mx-3'></div>
+      <div>
+        <h1 className="text-center mb-4">Vespertino</h1>
+        {turmas.filter(t=> t.turno == 'VESPERTINO').map(turma => (
+          <Button
+            key={turma.id}
+            variant="outline-primary"
+            className="w-100 mb-3"
+            onClick={() => handleTurmaClick(turma.id)}
+          >
+            {turma.nomeDaTurma} - {turma.sala} - {turma.turno}
+          </Button>
+        ))}
+      </div>
+      <div className='mx-3'></div>
+      <div>
+        <h1 className="text-center mb-4">Noturno</h1>
+        {turmas.filter(t=> t.turno == 'NOTURNO').map(turma => (
           <Button
             key={turma.id}
             variant="outline-primary"
@@ -45,6 +75,8 @@ const TurmasPage = () => {
         ))}
       </div>
     </Container>
+    </>
+    
   );
 };
 
