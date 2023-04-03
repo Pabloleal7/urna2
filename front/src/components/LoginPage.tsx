@@ -18,9 +18,15 @@ const LoginPage: React.FC<LoginPageProps> = () => {
     setPassword(event.target.value);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLFormElement>) => {
+    if (event.key === 'Enter') {
+      handleLogin();
+    }
+  };
+
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://apiurna-env.eba-m58zxm2n.us-east-1.elasticbeanstalk.com/api/v1/login', { username, password });
+      const response = await axios.post('http://152.67.50.27/api/v1/login', { username, password });
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('refreshToken', response.data.refreshToken);
       navigate('/turmas');
@@ -30,12 +36,12 @@ const LoginPage: React.FC<LoginPageProps> = () => {
   };
 
   return (
-    <Container className="h-100vh d-flex justify-content-center align-items-center">
+    <Container className="h-100vh d-flex justify-content-center align-items-center mt-5">
       <div className="bg-white p-4 rounded shadow-lg" style={{ maxWidth: '400px', width: '100%' }}>
         <div className="text-center mb-4">
           <h1>Login</h1>
         </div>
-        <Form>
+        <Form onKeyDown={handleKeyDown}>
           <Form.Group controlId="formBasicEmail">
             <Form.Control
               type="email"
