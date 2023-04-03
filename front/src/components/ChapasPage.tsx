@@ -18,7 +18,7 @@ const ChapasPage = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get<Chapa[]>(`http://apiurna-env.eba-m58zxm2n.us-east-1.elasticbeanstalk.com/chapas/turma/${id}`, {
+      .get<Chapa[]>(`http://152.67.50.27/chapas/turma/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -28,7 +28,7 @@ const ChapasPage = () => {
       });
 
       axios
-      .get<Turma>(`http://apiurna-env.eba-m58zxm2n.us-east-1.elasticbeanstalk.com/turmas/${id}`, {
+      .get<Turma>(`http://152.67.50.27/turmas/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -62,7 +62,7 @@ const ChapasPage = () => {
   const handleConfirmVote = () => {
     const token = localStorage.getItem("token");
     axios
-      .post(`http://apiurna-env.eba-m58zxm2n.us-east-1.elasticbeanstalk.com/votos/${selectedChapaId}`, null, {
+      .post(`http://152.67.50.27/votos/${selectedChapaId}`, null, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

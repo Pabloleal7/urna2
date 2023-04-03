@@ -33,7 +33,7 @@ const ResultadoPage = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get<Record<string, Voto[]>>(`http://apiurna-env.eba-m58zxm2n.us-east-1.elasticbeanstalk.com/votos`, {
+      .get<Record<string, Voto[]>>(`http://152.67.50.27/votos`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
